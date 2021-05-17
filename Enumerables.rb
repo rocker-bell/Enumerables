@@ -54,13 +54,21 @@ def my_map(Array)
 end
 
 def my_all(Array)
-  Array.my_each do |item|
+  self.my_each do |item|
     return true unless block_given?
     true_false yield(item)
     return false unless true_false
   end
   return true
 end
+
+def my_any(Array)
+  self.my_each do |item|
+    return true if yield |item|
+  end
+  false
+end
+
 
 
 
