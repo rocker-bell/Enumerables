@@ -27,14 +27,7 @@ To get a local copy of this project follow the steps below:
 
 Use `git clone git@github.com:rocker-bell/Enumerables.git` to clone the branch directly to your machine
 
-### Setting up linter
-
-### [RuboCop](https://docs.rubocop.org/en/stable/)
-
-1. Run `bundle install`.
-2. Run `rubocop`.
-3. Fix linter errors.
-4. **IMPORTANT NOTE**: feel free to research [auto-correct options for Rubocop](https://rubocop.readthedocs.io/en/latest/auto_correct/) if you get a flood of errors but keep in mind that correcting style errors manually will help you to make a habit of writing a clean code!
+### Running the program
 
 - Navigate the project, you can open it with VScode or any other code editor of choice
 - run the code by opening up your terminal and typing `ruby enumerables.rb`
