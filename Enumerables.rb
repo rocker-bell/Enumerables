@@ -1,3 +1,5 @@
+# rubocop:disable Style/CaseEquality
+
 module Enumerable
 #my_each
   def my_each(array)
@@ -7,6 +9,7 @@ module Enumerable
       i += 1
     end
   end
+end
 
   my_each[1, 2, 3, 4, 5] { |i| puts i ** 2 }
 
@@ -19,7 +22,7 @@ module Enumerable
       end
     end
   end
-end
+
 
 [1, 2, 3, 4, 5].my_each { |i| puts i ** 2 }
 
@@ -69,8 +72,39 @@ def my_any(Array)
   false
 end
 
+def my_none?(arg = (no_arg = true))
+  my_each do |item|
+    case block_given?
+    when false
+      return false if item && no_arg
+      return false if !no_arg && truethy_arg?(item, arg)
+    else
+      return false if yield(item)
+    end
+  end
+  true
+end
 
+def my_count(*question)
+  multiple_argument_error?(question)
+  result = 0
+  my_each do |item|
+    if question.size == 1
+      result += 1 if question[0] === item
+    elsif block_given?
+      result += 1 if yield(item)
+    elsif question.size.zero?
+      result += 1
+    end
+  end
+  result
+end
 
-
-
-
+def my_inject(arg = (no_arg = true))
+  accu = self[0]
+  for e in 1...length do
+    accu = yield(accu, self[e]) if no_arg
+    accu = accu.send(arg, self[e]) unless no_arg
+  end
+  accu
+end
