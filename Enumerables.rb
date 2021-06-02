@@ -20,20 +20,18 @@ module Enumerable
     self[i]
   end
 
+  
+  # def my_select
   def my_select
-    #returns an array for which the return value is true
-    if block_given?
-      new_arr = []
-      for i in 0..self.length - 1
-        if (yield(self[i]))
-          new_arr.push(self[i])
-        end
+    new_array = []
+    i = 0
+    while i < self.length
+      if yield(self[i])
+        new_array.push(self[i])
+        i += 1
       end
-      puts new_arr
-    else
-      puts "Please input a block"
+      puts new_array
     end
-  end
 
   def my_all?
     if block_given?
