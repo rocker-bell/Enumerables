@@ -33,22 +33,20 @@ module Enumerable
       puts new_array
     end
 
+  
+  #def my_all
   def my_all?
-    if block_given?
-      result = true
-      for i in 0..self.length - 1
-        if (yield(self[i]))
-          next
-        else
-          result = false
-        end
+    result = true
+    i = 0
+    while i < self.length
+      if yield(self[i])
+        i += 0
+        next
+      else
+        result = false
       end
-    else
-      "Please input a block"
+      puts result
     end
-
-    puts result
-  end
 
   def my_any?
     if block_given?
