@@ -1,22 +1,23 @@
 module Enumerable
+  
+  # my_eachhh
   def my_each
-    if block_given?
-      for i in 0..self.length - 1
-        yield(self[i])
-      end
-    else
-      puts "Please input a block!"
+    i = 0
+    while i < self.length
+      yield self[i]
+      i += 1
     end
+    self[0]
   end
 
+  # my_each_with_index
   def my_each_with_index
-    if block_given?
-      for i in 0..self.length - 1
-        yield(self[i], i)
-      end
-    else
-      puts "Please input a block"
+    i  = 0
+    while i < self.length
+      yield (self[i], i)
+      i += 1
     end
+    self[i]
   end
 
   def my_select
